@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class blockProfile {
 
 	public static void blockProfileMain(String url, String userName, String userPassword) {
@@ -15,7 +17,8 @@ public class blockProfile {
 		String baseUrl = url;
 		ChromeOptions c=new ChromeOptions();
 		c.addArguments("--disable-notifications");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");	
+		WebDriverManager.chromedriver().setup();
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver(c);
 		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
@@ -98,6 +101,12 @@ public class blockProfile {
 	 WebElement done = driver.findElement(By.xpath("//span[contains(text(),'Done')]"));
 	 builderFive.click(done).perform();
 	System.out.println("Profile has been successfully Blocked");
+	try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e1) {
+		e1.printStackTrace();
+	}
+    driver.quit();
 
 	}
 

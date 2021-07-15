@@ -1,7 +1,11 @@
+
+
 package facebook.Action;
 
 import org.openqa.selenium.By;
 import facebookUIone.facebookApplication;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +18,8 @@ public class like {
 		String baseUrl = url;
 		ChromeOptions c=new ChromeOptions();
 		c.addArguments("--disable-notifications");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver(c);
 		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
@@ -51,5 +56,11 @@ public class like {
 		}
 	    actions.click(driver.findElement(By.xpath("//div[contains(text(),'Like')]/parent::div"))).perform();
 	    System.out.println("Item has been Liked Successfully");
+	    try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+	    driver.quit();
 	}
 }

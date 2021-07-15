@@ -158,13 +158,15 @@ public class facebookApplication {
 		frmFacebookApplication.getContentPane().add(btnNewButton);
 		
 		textPane = new JTextPane();
+		textPane.setEditable(false);
 		textPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textPane.setBackground(new Color(0, 102, 255));
 		textPane.setForeground(Color.GREEN);
-		textPane.setBounds(134, 282, 457, 39);
+		textPane.setBounds(138, 282, 457, 39);
 		frmFacebookApplication.getContentPane().add(textPane);
 		
 		textPane_1 = new JTextPane();
+		textPane_1.setEditable(false);
 		textPane_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		textPane_1.setForeground(Color.RED);
 		textPane_1.setBackground(new Color(0, 102, 255));

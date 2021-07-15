@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class sad {
 
 	public static void sadMain(String url, String userName, String userPassword) {
@@ -14,7 +16,8 @@ public class sad {
 		String baseUrl = url;
 		ChromeOptions c=new ChromeOptions();
 		c.addArguments("--disable-notifications");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");	
+		WebDriverManager.chromedriver().setup();
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\Siddhartha\\Desktop\\chromedriver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver(c);
 		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
@@ -49,6 +52,12 @@ public class sad {
 		}
 	    actions.click(driver.findElement(By.xpath("//div[@aria-label='Sad']"))).perform();
 	    System.out.println("Item has been Sad Successfully");
+	    try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+	    driver.quit();
 
 	}
 
